@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cours HTML5 : balises, sémantique, liens, images et formulaires.">
+  <title>HTML5 : structurer une page - EduLearn</title>
+  <link rel="icon" href="../images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body data-course-page="html">
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html"><img src="../images/logo.svg" alt="" width="36" height="36">EduLearn</a>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="cours-html.html" aria-current="page">HTML5</a></li>
+          <li><a href="cours-css.html">CSS3</a></li>
+          <li><a href="cours-js.html">JavaScript</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="course-header">
+    <div class="container">
+      <p class="breadcrumb"><a href="../index.html">Accueil</a> › HTML5</p>
+      <h1>HTML5 : structurer une page</h1>
+      <div class="progress">
+        <div class="progress-label"><span>Votre progression</span><span id="course-pct">0/4 modules (0 %)</span></div>
+        <div class="progress-track" id="course-track" role="progressbar" aria-label="Progression du cours" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="course-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <main id="contenu" class="container course-layout">
+    <aside class="module-list" aria-label="Modules du cours">
+      <h2>Modules</h2>
+      <ol id="module-list"></ol>
+    </aside>
+
+    <article class="module-content">
+<section class="module" id="module-1" aria-labelledby="titre-1">
+  <h2 id="titre-1">Introduction à HTML5</h2>
+  <p>HTML (HyperText Markup Language) est le langage qui décrit la structure d'une page web. Il utilise des balises pour indiquer au navigateur ce qu'est chaque élément : un titre, un paragraphe, une image, un lien.</p>
+  <p>Un document HTML5 commence toujours par la déclaration <code>&lt;!DOCTYPE html&gt;</code>, puis contient deux parties : <code>&lt;head&gt;</code> (informations sur la page) et <code>&lt;body&gt;</code> (contenu visible).</p>
+  <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Ma première page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Bonjour&lt;/h1&gt;
+  &lt;p&gt;Ceci est un paragraphe.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  <p class="note"><strong>À retenir :</strong> Pensez toujours à déclarer la langue (<code>lang="fr"</code>) et l'encodage UTF-8.</p>
+  <figure><img src="../images/html.svg" alt="Illustration : structure d'une page HTML" width="640" height="360" loading="lazy"><figcaption>Illustration : structure d'une page HTML</figcaption></figure>
+</section>
+
+<section class="module" id="module-2" aria-labelledby="titre-2">
+  <h2 id="titre-2">Titres, textes et listes</h2>
+  <p>Les titres vont de <code>&lt;h1&gt;</code> (le plus important) à <code>&lt;h6&gt;</code>. Une page ne doit avoir qu'un seul <code>&lt;h1&gt;</code>. Les paragraphes utilisent <code>&lt;p&gt;</code>.</p>
+  <p>Pour les listes, on utilise <code>&lt;ul&gt;</code> (liste à puces), <code>&lt;ol&gt;</code> (liste numérotée) et <code>&lt;li&gt;</code> pour chaque élément.</p>
+  <pre><code>&lt;h2&gt;Mes langages&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+  <figure>
+    <video controls preload="none" poster="../images/video-poster.svg" aria-label="Les bases du HTML en quelques minutes">
+      <source src="../videos/html-intro.mp4" type="video/mp4">
+      <span class="video-fallback">Votre navigateur ne peut pas lire cette vidéo.</span>
+    </video>
+    <figcaption>Vidéo : Les bases du HTML en quelques minutes</figcaption>
+  </figure>
+</section>
+
+<section class="module" id="module-3" aria-labelledby="titre-3">
+  <h2 id="titre-3">Liens, images et sémantique</h2>
+  <p>Un lien se crée avec <code>&lt;a href="..."&gt;</code> et une image avec <code>&lt;img src="..." alt="..."&gt;</code>. L'attribut <code>alt</code> est obligatoire pour l'accessibilité.</p>
+  <p>HTML5 apporte des balises sémantiques : <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code> et <code>&lt;footer&gt;</code>. Elles rendent la page plus lisible pour les humains et les moteurs de recherche.</p>
+  <pre><code>&lt;header&gt;
+  &lt;nav&gt;
+    &lt;a href="index.html"&gt;Accueil&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;img src="logo.png" alt="Logo du site"&gt;
+&lt;/main&gt;
+&lt;footer&gt;© 2026&lt;/footer&gt;</code></pre>
+  <p class="note"><strong>À retenir :</strong> Préférez les balises sémantiques à une accumulation de <code>&lt;div&gt;</code>.</p>
+</section>
+
+<section class="module" id="module-4" aria-labelledby="titre-4">
+  <h2 id="titre-4">Les formulaires</h2>
+  <p>Un formulaire permet à l'utilisateur de saisir des données. Il est défini par <code>&lt;form&gt;</code> et contient des champs <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code> et un bouton d'envoi.</p>
+  <p>Chaque champ doit être associé à un <code>&lt;label&gt;</code> grâce aux attributs <code>for</code> et <code>id</code> : c'est indispensable pour l'accessibilité.</p>
+  <pre><code>&lt;form action="#" method="post"&gt;
+  &lt;label for="nom"&gt;Nom&lt;/label&gt;
+  &lt;input type="text" id="nom" name="nom" required&gt;
+
+  &lt;label for="email"&gt;E-mail&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+</section>
+
+      <div class="module-nav">
+        <button class="btn btn-outline" type="button" id="btn-prev">← Précédent</button>
+        <button class="btn" type="button" id="btn-done">Marquer comme terminé</button>
+        <button class="btn btn-outline" type="button" id="btn-next">Suivant →</button>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div><strong>EduLearn</strong><br>Mini-projet Web : sujet 8, mini LMS.<br>Réalisé par Étudiant 1 et Étudiant 2.</div>
+        <address><strong>ISSAT Sousse</strong><br>Département Informatique, FIA3<br>Encadrant : Mr. Sofiene Ben Ahmed</address>
+      </div>
+      <p class="footer-copy">A.U. 2025/2026 · Projet pédagogique, contenu fictif.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
