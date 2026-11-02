@@ -399,6 +399,15 @@ let cheminAffiche = location.pathname;
 function remplacerPage(doc) {
   document.title = doc.title;
   document.body.className = doc.body.className;
+  // IMPORTANT : on recopie aussi les attributs data-* du <body> de la nouvelle page.
+  // Sans cela, data-course-page garde la valeur de la première page chargée
+  // (ex. "html") et le quiz, la progression et la position du mauvais cours s'affichent.
+  [...document.body.attributes]
+    .filter((a) => a.name.startsWith("data-"))
+    .forEach((a) => document.body.removeAttribute(a.name));
+  [...doc.body.attributes]
+    .filter((a) => a.name.startsWith("data-"))
+    .forEach((a) => document.body.setAttribute(a.name, a.value));
   const scripts = [...document.body.querySelectorAll("script")];      // on garde notre script
   const contenu = [...doc.body.children].filter((n) => n.tagName !== "SCRIPT");
   document.body.replaceChildren(...contenu, ...scripts);
