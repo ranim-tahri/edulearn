@@ -1,8 +1,8 @@
 # EduLearn – Mini plateforme de cours en ligne (mini LMS)
 
-Mini-projet Web – Sujet 8 · FIA3 · ISSAT Sousse · A.U. 2026/2027
+Mini-projet Web – Sujet 8 · FIA4 · ISSAT Sousse · A.U. 2026/2027
 Encadrant : Mr. Sofiene Ben Ahmed
-Réalisé par : **Étudiant 1** et **Étudiant 2**
+Réalisé par : **Rihab Ourari** et **Ranim Tahri**
 
 ## Description
 EduLearn est une plateforme de cours (HTML5, CSS3, JavaScript) découpés en modules,
