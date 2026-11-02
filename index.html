@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduLearn : mini plateforme de cours en ligne pour apprendre HTML, CSS et JavaScript.">
+  <title>EduLearn - Plateforme de cours en ligne</title>
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#cours">Aller au contenu</a>
+  <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="images/logo.svg" alt="" width="36" height="36">EduLearn</a>
+      <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="index.html" aria-current="page">Accueil</a></li>
+          <li><a href="#cours">Cours</a></li>
+          <li><a href="#avantages">Avantages</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h1>Apprenez le développement web à votre rythme</h1>
+          <p>EduLearn est une mini plateforme d'apprentissage : des cours découpés en modules, avec des textes, des images et des vidéos, et une progression qui se sauvegarde automatiquement.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#cours">Voir les cours</a>
+            <a class="btn btn-outline" href="pages/cours-html.html">Commencer avec HTML</a>
+          </div>
+          <ul class="stats">
+            <li>3 cours</li>
+            <li>12 modules</li>
+            <li>100 % gratuit</li>
+          </ul>
+        </div>
+        <aside class="hero-card" aria-label="Comment ça marche">
+          <h2>Comment ça marche ?</h2>
+          <ol>
+            <li>Choisissez un cours</li>
+            <li>Suivez les modules un par un</li>
+            <li>Cliquez sur « Marquer comme terminé »</li>
+            <li>Suivez votre progression</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="cours">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos cours</h2>
+          <p>Trois parcours pour maîtriser les bases du web. Votre progression s'affiche sur chaque carte.</p>
+        </div>
+        <div class="course-grid">
+
+          <article class="card" data-course="html" data-total="4">
+            <img src="images/html.svg" alt="Illustration du cours HTML5" width="640" height="360" loading="lazy">
+            <div class="card-body">
+              <span class="tag">Débutant</span>
+              <h3>HTML5 : structurer une page</h3>
+              <p>Balises, sémantique, liens, images et formulaires.</p>
+              <div class="progress">
+                <div class="progress-label"><span>Progression</span><span class="progress-pct">0 %</span></div>
+                <div class="progress-track" role="progressbar" aria-label="Progression du cours HTML5" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill"></div></div>
+              </div>
+              <a class="btn" href="pages/cours-html.html">Ouvrir le cours</a>
+            </div>
+          </article>
+
+          <article class="card" data-course="css" data-total="4">
+            <img src="images/css.svg" alt="Illustration du cours CSS3" width="640" height="360" loading="lazy">
+            <div class="card-body">
+              <span class="tag">Débutant</span>
+              <h3>CSS3 : mise en forme et responsive</h3>
+              <p>Sélecteurs, Flexbox, Grid et media queries.</p>
+              <div class="progress">
+                <div class="progress-label"><span>Progression</span><span class="progress-pct">0 %</span></div>
+                <div class="progress-track" role="progressbar" aria-label="Progression du cours CSS3" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill"></div></div>
+              </div>
+              <a class="btn" href="pages/cours-css.html">Ouvrir le cours</a>
+            </div>
+          </article>
+
+          <article class="card" data-course="js" data-total="4">
+            <img src="images/js.svg" alt="Illustration du cours JavaScript" width="640" height="360" loading="lazy">
+            <div class="card-body">
+              <span class="tag">Intermédiaire</span>
+              <h3>JavaScript : rendre la page vivante</h3>
+              <p>Variables, fonctions, DOM et événements.</p>
+              <div class="progress">
+                <div class="progress-label"><span>Progression</span><span class="progress-pct">0 %</span></div>
+                <div class="progress-track" role="progressbar" aria-label="Progression du cours JavaScript" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill"></div></div>
+              </div>
+              <a class="btn" href="pages/cours-js.html">Ouvrir le cours</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="avantages" style="background:#fff">
+      <div class="container">
+        <div class="section-title">
+          <h2>Pourquoi EduLearn ?</h2>
+        </div>
+        <div class="features">
+          <div class="feature"><div class="icon" aria-hidden="true">📚</div><h3>Modules courts</h3><p>Chaque cours est découpé en petites étapes faciles à suivre.</p></div>
+          <div class="feature"><div class="icon" aria-hidden="true">📈</div><h3>Progression visuelle</h3><p>Une barre de progression vous montre où vous en êtes.</p></div>
+          <div class="feature"><div class="icon" aria-hidden="true">📱</div><h3>Sur tous les écrans</h3><p>Le site s'adapte au mobile, à la tablette et à l'ordinateur.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <strong>EduLearn</strong><br>
+          Mini-projet Web : sujet 8, Plateforme de cours en ligne (mini LMS).<br>
+          Réalisé par Étudiant 1 et Étudiant 2.
+        </div>
+        <address>
+          <strong>ISSAT Sousse</strong><br>
+          Département Informatique, FIA3<br>
+          Encadrant : Mr. Sofiene Ben Ahmed
+        </address>
+      </div>
+      <p class="footer-copy">A.U. 2025/2026 · Projet pédagogique, contenu fictif.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

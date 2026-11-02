@@ -1,0 +1,308 @@
+/* =========================================================
+   Mini LMS - EduLearn
+   Mini-projet Web FIA3 - ISSAT Sousse - A.U. 2025/2026
+   Approche mobile-first : styles de base = mobile,
+   puis media queries pour tablette (768px) et desktop (1024px)
+   ========================================================= */
+
+/* ---------- 1. Variables (charte graphique) ---------- */
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --primary-soft: #eef2ff;
+  --accent: #f97316;
+  --success: #16a34a;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --line: #e2e8f0;
+  --radius: 14px;
+  --shadow: 0 4px 16px rgba(15, 23, 42, .08);
+  --header-h: 64px;
+}
+
+/* ---------- 2. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+body {
+  margin: 0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+}
+img, video { max-width: 100%; height: auto; display: block; }
+a { color: var(--primary); }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .6em; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.container { width: min(100% - 32px, 1100px); margin-inline: auto; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: 8px; top: -60px; z-index: 200;
+  background: var(--primary); color: #fff; padding: 8px 14px; border-radius: 8px;
+}
+.skip-link:focus { top: 8px; }
+
+/* ---------- 3. Barre de progression de lecture (haut de page) ---------- */
+.reading-progress {
+  position: fixed; top: 0; left: 0; z-index: 150;
+  height: 4px; width: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  transform: scaleX(0); transform-origin: 0 50%;
+}
+
+/* ---------- 4. En-tête + menu burger ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: var(--header-h);
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 1.15rem; color: var(--text); text-decoration: none;
+}
+.brand img { width: 36px; height: 36px; }
+
+.burger {
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 44px; height: 44px; padding: 10px;
+  background: transparent; border: 1px solid var(--line); border-radius: 10px;
+  cursor: pointer;
+}
+.burger span {
+  display: block; height: 3px; width: 100%;
+  background: var(--text); border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.main-nav {
+  position: absolute; top: var(--header-h); left: 0; right: 0;
+  background: var(--surface); border-bottom: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  max-height: 0; overflow: hidden;
+  transition: max-height .35s ease;
+}
+.main-nav.open { max-height: 360px; }
+.main-nav ul { list-style: none; margin: 0; padding: 8px 16px 16px; display: grid; gap: 4px; }
+.main-nav a {
+  display: block; padding: 12px 14px; border-radius: 10px;
+  color: var(--text); text-decoration: none; font-weight: 500;
+}
+.main-nav a:hover, .main-nav a[aria-current="page"] { background: var(--primary-soft); color: var(--primary); }
+
+/* ---------- 5. Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 22px; border: 2px solid var(--primary); border-radius: 999px;
+  background: var(--primary); color: #fff;
+  font: 600 .95rem "Poppins", system-ui, sans-serif;
+  text-decoration: none; cursor: pointer;
+  transition: transform .2s, background .2s, box-shadow .2s;
+}
+.btn:hover { background: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-2px); box-shadow: var(--shadow); }
+.btn-outline { background: transparent; color: var(--primary); }
+.btn-outline:hover { color: #fff; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-success { background: var(--success); border-color: var(--success); }
+.btn-success:hover { background: #15803d; border-color: #15803d; }
+
+/* ---------- 6. Hero (accueil) ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--primary) 0%, #7c3aed 100%);
+  color: #fff; padding: 56px 0 64px;
+}
+.hero-inner { display: grid; gap: 28px; align-items: center; }
+.hero h1 { font-size: clamp(1.9rem, 6vw, 3rem); }
+.hero p { max-width: 52ch; opacity: .92; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.hero .btn { background: #fff; color: var(--primary); border-color: #fff; }
+.hero .btn-outline { background: transparent; color: #fff; }
+.hero .btn-outline:hover { background: rgba(255,255,255,.18); }
+.stats { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; padding: 0; list-style: none; }
+.stats li { background: rgba(255,255,255,.16); padding: 8px 16px; border-radius: 999px; font-size: .9rem; }
+.hero-card {
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.3);
+  border-radius: var(--radius); padding: 22px;
+}
+.hero-card h2 { font-size: 1.1rem; }
+
+/* ---------- 7. Sections ---------- */
+.section { padding: 56px 0; }
+.section-title { text-align: center; margin-bottom: 32px; }
+.section-title p { color: var(--muted); margin: 0 auto; max-width: 60ch; }
+
+/* ---------- 8. Grille des cours (CSS Grid) : 1 / 2 / 3 colonnes ---------- */
+.course-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.card {
+  display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+  transition: transform .25s, box-shadow .25s;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(15, 23, 42, .14); }
+.card img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.card-body { display: flex; flex-direction: column; gap: 10px; padding: 20px; flex: 1; }
+.card-body h3 { margin: 0; font-size: 1.2rem; }
+.card-body p { margin: 0; color: var(--muted); font-size: .95rem; }
+.tag {
+  align-self: flex-start; padding: 2px 12px; border-radius: 999px;
+  background: var(--primary-soft); color: var(--primary); font-size: .78rem; font-weight: 600;
+}
+.card-body .btn { margin-top: auto; align-self: flex-start; }
+
+/* Barre de progression d'un cours */
+.progress { margin-top: 4px; }
+.progress-label { display: flex; justify-content: space-between; font-size: .82rem; color: var(--muted); margin-bottom: 6px; }
+.progress-track { height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.progress-fill {
+  height: 100%; width: 0; border-radius: 999px;
+  background: linear-gradient(90deg, var(--success), #4ade80);
+  transition: width .5s ease;
+}
+
+/* ---------- 9. Pourquoi nous (flexbox) ---------- */
+.features { display: flex; flex-direction: column; gap: 20px; }
+.feature {
+  flex: 1; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 24px; text-align: center;
+}
+.feature .icon { font-size: 2rem; }
+.feature h3 { font-size: 1.05rem; margin-top: 8px; }
+.feature p { color: var(--muted); margin: 0; font-size: .95rem; }
+
+/* ---------- 10. Page de cours ---------- */
+.course-header { background: var(--primary-soft); padding: 32px 0; border-bottom: 1px solid var(--line); }
+.breadcrumb { font-size: .9rem; color: var(--muted); margin-bottom: 10px; }
+.course-header h1 { font-size: clamp(1.6rem, 5vw, 2.4rem); margin-bottom: 14px; }
+
+.course-layout { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 28px 0 56px; }
+
+.module-list {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 16px; align-self: start;
+}
+.module-list h2 { font-size: 1rem; margin-bottom: 10px; }
+.module-list ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.module-list button {
+  width: 100%; display: flex; align-items: center; gap: 10px; text-align: left;
+  padding: 10px 12px; border: 0; border-radius: 10px; background: transparent;
+  font: 500 .92rem "Poppins", system-ui, sans-serif; color: var(--text); cursor: pointer;
+}
+.module-list button:hover { background: var(--primary-soft); }
+.module-list button[aria-current="step"] { background: var(--primary-soft); color: var(--primary); font-weight: 600; }
+.module-list .check {
+  flex: none; width: 24px; height: 24px; display: grid; place-items: center;
+  border: 2px solid var(--line); border-radius: 50%; font-size: .75rem; color: transparent;
+}
+.module-list li.done .check { background: var(--success); border-color: var(--success); color: #fff; }
+
+.module-content {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px; min-width: 0;
+}
+.module { display: none; animation: apparition .4s ease; }
+.module.active { display: block; }
+@keyframes apparition { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.module h2 { font-size: 1.5rem; }
+.module p { text-align: justify; }
+.module figure { margin: 20px 0; }
+.module figure img, .module video { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+.module figcaption { margin-top: 6px; font-size: .85rem; color: var(--muted); text-align: center; }
+.module pre {
+  background: #0f172a; color: #e2e8f0; padding: 16px; border-radius: 12px;
+  overflow-x: auto; font-size: .88rem; line-height: 1.6;
+}
+.module code:not(pre code) { background: var(--primary-soft); color: var(--primary-dark); padding: 1px 6px; border-radius: 5px; font-size: .9em; }
+.note {
+  margin: 18px 0; padding: 12px 16px; border-left: 4px solid var(--accent);
+  background: #fff7ed; border-radius: 0 10px 10px 0;
+}
+.video-fallback { color: var(--muted); font-size: .9rem; }
+
+.module-nav {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between;
+  margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line);
+}
+
+/* ---------- 11. Pied de page ---------- */
+.site-footer { background: #0f172a; color: #cbd5e1; padding: 36px 0 24px; font-size: .92rem; }
+.footer-inner { display: grid; gap: 20px; }
+.site-footer strong { color: #fff; }
+.site-footer a { color: #a5b4fc; }
+.footer-copy { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.15); font-size: .82rem; }
+
+/* =========================================================
+   TABLETTE : >= 768px
+   ========================================================= */
+@media (min-width: 768px) {
+  .hero-inner { grid-template-columns: 1.3fr 1fr; }
+  .course-grid { grid-template-columns: repeat(2, 1fr); }
+  .features { flex-direction: row; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .module-content { padding: 32px; }
+}
+
+/* =========================================================
+   DESKTOP : >= 1024px (menu burger remplacé par menu horizontal)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .burger { display: none; }
+  .main-nav { position: static; max-height: none; overflow: visible; border: 0; box-shadow: none; background: transparent; }
+  .main-nav ul { display: flex; padding: 0; gap: 4px; }
+  .course-grid { grid-template-columns: repeat(3, 1fr); }
+  .course-layout { grid-template-columns: 280px 1fr; }
+  .module-list { position: sticky; top: calc(var(--header-h) + 16px); }
+}
+
+/* ---------- Accessibilité : mouvement réduit ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ---------- Impression ---------- */
+@media print {
+  .site-header, .module-nav, .reading-progress, .site-footer { display: none; }
+  .module { display: block !important; }
+}
+
+/* =========================================================
+   12. Quiz interactif (ajouté pour le sujet 8)
+   ========================================================= */
+.module-list li.quiz-sep { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.module-list .quiz-ico { flex: none; width: 24px; text-align: center; }
+.quiz-panel p { text-align: left; }
+.quiz-meta { color: var(--muted); font-size: .9rem; margin: 0 0 8px; }
+.quiz-question { font-weight: 600; font-size: 1.1rem; margin: 20px 0 14px; }
+.quiz-options { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.quiz-option {
+  width: 100%; text-align: left; padding: 12px 16px;
+  border: 2px solid var(--line); border-radius: 12px; background: var(--surface);
+  font: 500 .95rem "Poppins", system-ui, sans-serif; color: var(--text);
+  cursor: pointer; transition: border-color .2s, background .2s;
+}
+.quiz-option:hover:not(:disabled) { border-color: var(--primary); background: var(--primary-soft); }
+.quiz-option:disabled { cursor: default; }
+.quiz-option.ok { border-color: var(--success); background: #f0fdf4; }
+.quiz-option.ko { border-color: #dc2626; background: #fef2f2; }
+.quiz-feedback { margin-top: 16px; padding: 12px 16px; border-radius: 10px; font-size: .95rem; }
+.quiz-feedback:empty { display: none; }
+.quiz-feedback.ok { background: #f0fdf4; border-left: 4px solid var(--success); }
+.quiz-feedback.ko { background: #fef2f2; border-left: 4px solid #dc2626; }
+.quiz-actions { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 12px; }
+.quiz-score { font-size: 2.4rem; font-weight: 700; color: var(--primary); margin: 8px 0; }
+
+@media print {
+  .quiz-panel { display: none !important; }
+}
